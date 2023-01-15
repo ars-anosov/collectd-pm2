@@ -35,11 +35,11 @@ function collect () {
                 pidnumber = pidnumber + 1;
             }
 
-            process.stdout.write("PUTVAL \"" + hostname + "/" + "nodejs-" + name + "/delay-" + "loop_delay-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.axm_monitor["Loop delay"].value.replace('ms', '') + "\n");
-            process.stdout.write("PUTVAL \"" + hostname + "/" + "nodejs-" + name + "/memory-" + "memory_used-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.monit.memory + "\n");
-            process.stdout.write("PUTVAL \"" + hostname + "/" + "nodejs-" + name + "/vcpu-" + "cpu_used-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.monit.cpu + "\n");
-            process.stdout.write("PUTVAL \"" + hostname + "/" + "nodejs-" + name + "/counter-" + "restarts-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.restart_time + "\n");
-            process.stdout.write("PUTVAL \"" + hostname + "/" + "nodejs-" + name + "/gauge-" + "unstable_restarts-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.unstable_restarts + "\n");
+            process.stdout.write("PUTVAL \"" + hostname + "/" + "pm2-" + name + "/delay-" + "loop_delay-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.axm_monitor["Event Loop Latency"].value.replace('ms', '') + "\n");
+            process.stdout.write("PUTVAL \"" + hostname + "/" + "pm2-" + name + "/memory-" + "memory_used-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.monit.memory + "\n");
+            process.stdout.write("PUTVAL \"" + hostname + "/" + "pm2-" + name + "/vcpu-" + "cpu_used-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.monit.cpu + "\n");
+            process.stdout.write("PUTVAL \"" + hostname + "/" + "pm2-" + name + "/counter-" + "restarts-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.restart_time + "\n");
+            process.stdout.write("PUTVAL \"" + hostname + "/" + "pm2-" + name + "/gauge-" + "unstable_restarts-pid_" + pidnumber + "\" interval=" + interval + " " + timestamp + ":" + item.pm2_env.unstable_restarts + "\n");
         });
 
         setTimeout(collect, interval*1000);
